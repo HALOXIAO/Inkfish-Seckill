@@ -11,12 +11,15 @@ import java.util.List;
 @Service
 public interface BaseProductService {
 
-     boolean addProduct(Product product);
+    boolean addProduct(Product product);
 
-     boolean deleteProduct(Integer id);
+    boolean deleteProduct(Integer id);
 
-     boolean updateProduct(Product product);
+    boolean updateProduct(Product product);
 
-     boolean addProducts(List<Product> productList);
+    boolean addProducts(List<Product> productList);
 
-    }
+    boolean deleteProducts(List<Integer> ids);
+
+
+}

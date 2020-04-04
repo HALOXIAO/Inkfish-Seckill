@@ -27,10 +27,14 @@ public class BaseProductServiceImpl implements BaseProductService {
         return productMapper.save(product);
     }
 
-
     @Override
     public boolean deleteProduct(Integer id) {
         return productMapper.remove(new QueryWrapper<Product>().eq("id", id));
+    }
+
+    @Override
+    public boolean deleteProducts(List<Integer> ids) {
+        return productMapper.removeByIds(ids);
     }
 
     @Override

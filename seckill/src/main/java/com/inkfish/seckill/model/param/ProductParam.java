@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 /**
  * @author HALOXIAO
  **/
-public class productParam {
+public class ProductParam {
 
     @NotEmpty
     private String name;

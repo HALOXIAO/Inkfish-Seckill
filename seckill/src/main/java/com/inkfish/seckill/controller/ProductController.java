@@ -18,10 +18,11 @@ public class ProductController {
 
     @GetMapping("/product/count")
     public ResultBean<Integer> getProductCount(String productId) {
-
         ResultBean<Integer> bean = new ResultBean<>("success", RESULT_BEAN_STATUS_CODE.SUCCESS);
         return bean;
     }
+
+
 
 
 }

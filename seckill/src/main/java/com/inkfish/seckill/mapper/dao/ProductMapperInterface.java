@@ -6,5 +6,5 @@ import com.inkfish.seckill.model.Product;
 /**
  * @author HALOXIAO
  **/
-public interface ProductMapper extends BaseMapper<Product> {
+public interface ProductMapperInterface extends BaseMapper<Product> {
 }

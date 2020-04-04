@@ -41,6 +41,7 @@ public class BaseProductServiceImpl implements BaseProductService {
     public boolean updateProduct(Product product) {
         return productMapper.update(product, new QueryWrapper<Product>().eq("id", product.getId()));
     }
+
     @Override
     public boolean addProducts(List<Product> productList) {
         return productMapper.saveBatch(productList);

@@ -7,6 +7,8 @@ import com.inkfish.seckill.service.BaseProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author HALOXIAO
  **/
@@ -35,6 +37,8 @@ public class BaseProductServiceImpl implements BaseProductService {
     public boolean updateProduct(Product product) {
         return productMapper.update(product, new QueryWrapper<Product>().eq("id", product.getId()));
     }
-
-
+    @Override
+    public boolean addProducts(List<Product> productList) {
+        return productMapper.saveBatch(productList);
+    }
 }

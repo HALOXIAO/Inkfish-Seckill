@@ -5,6 +5,7 @@ import com.inkfish.seckill.common.ResultBean;
 import com.inkfish.seckill.model.Product;
 import com.inkfish.seckill.model.convert.ProductParamToProduct;
 import com.inkfish.seckill.model.param.ProductParam;
+import com.inkfish.seckill.service.BaseProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,9 @@ public class ProductController {
     @Autowired
     StringRedisTemplate stringRedisTemplate;
 
+    @Autowired
+    BaseProductService baseProductService;
+
     @GetMapping("/product/count")
     public ResultBean<Integer> getProductCount(String productId) {
         ResultBean<Integer> bean = new ResultBean<>("success", RESULT_BEAN_STATUS_CODE.SUCCESS);
@@ -30,9 +34,10 @@ public class ProductController {
     @PostMapping("/product")
     public ResultBean<Boolean> addProduct(@RequestBody ProductParam productParam) {
         Product product = ProductParamToProduct.INSTANCE.from(productParam);
-
-        ResultBean<Boolean> bean = new ResultBean<>("success", RESULT_BEAN_STATUS_CODE.SUCCESS);
-        return bean;
+        if (baseProductService.addProduct(product)) {
+            ResultBean<Boolean> bean = new ResultBean<>("success", RESULT_BEAN_STATUS_CODE.SUCCESS);
+        }
+        return new ResultBean<>("fail", RESULT_BEAN_STATUS_CODE.UNKNOWN_EXCEPTION);
     }
 
 }

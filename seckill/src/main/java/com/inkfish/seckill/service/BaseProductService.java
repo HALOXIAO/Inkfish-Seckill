@@ -9,7 +9,11 @@ import org.springframework.stereotype.Service;
 @Service
 public interface BaseProductService {
 
-    public boolean addProduct(Product product);
+     boolean addProduct(Product product);
+
+     boolean deleteProduct(Integer id);
+
+     boolean updateProduct(Product product);
 
 
-}
+    }

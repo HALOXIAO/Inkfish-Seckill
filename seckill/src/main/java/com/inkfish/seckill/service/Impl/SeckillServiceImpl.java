@@ -2,11 +2,18 @@ package com.inkfish.seckill.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.inkfish.seckill.common.REDIS_PRODUCT_CACHE;
+import com.inkfish.seckill.mapper.ProductMapper;
 import com.inkfish.seckill.mapper.SeckillProductMapper;
+import com.inkfish.seckill.model.Product;
 import com.inkfish.seckill.model.SeckillProduct;
 import com.inkfish.seckill.service.SeckillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.redis.connection.RedisConnection;
+import org.springframework.data.redis.core.RedisCallback;
+import org.springframework.data.redis.core.RedisOperations;
+import org.springframework.data.redis.core.SessionCallback;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +35,10 @@ public class SeckillServiceImpl implements SeckillService {
 
     @Autowired
     SeckillProductMapper seckillProductMapper;
+
+
+    @Autowired
+    ProductMapper productMapper;
 
     DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern(REDIS_PRODUCT_CACHE.PRODUCT_DATE_FORMAT.getValue());
 
@@ -58,5 +69,18 @@ public class SeckillServiceImpl implements SeckillService {
             count = (int) o;
         }
         return count >= 0;
+    }
+
+    @Override
+    public boolean seckillProductPreheat(Integer productId) {
+        Product product = productMapper.getOne(new QueryWrapper<Product>().eq("id", productId));
+        stringRedisTemplate.executePipelined(new RedisCallback<Object>() {
+            @Override
+            public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
+//                redisConnection.set
+                return null;
+            }
+        });
+        return false;
     }
 }

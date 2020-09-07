@@ -8,5 +8,11 @@ public interface SeckillService {
 
     boolean checkSeckillTime(Integer productId);
 
+
     boolean checkProductStore(Integer productId);
+
+    boolean seckillProductPreheat(Integer productId);
+
+
+
 }

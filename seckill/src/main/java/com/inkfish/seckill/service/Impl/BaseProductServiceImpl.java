@@ -46,4 +46,7 @@ public class BaseProductServiceImpl implements BaseProductService {
     public boolean addProducts(List<Product> productList) {
         return productMapper.saveBatch(productList);
     }
+
+
+
 }

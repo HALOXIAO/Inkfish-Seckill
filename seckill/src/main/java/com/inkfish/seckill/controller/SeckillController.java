@@ -20,4 +20,7 @@ public class SeckillController {
     public ResultBean<Boolean> placeOrder(Integer order) {
         return null;
     }
+
+
+
 }

@@ -22,4 +22,5 @@ public interface BaseProductService {
     boolean deleteProducts(List<Integer> ids);
 
 
+
 }

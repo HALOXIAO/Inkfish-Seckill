@@ -25,6 +25,8 @@ public class ProductController {
     @Autowired
     BaseProductService baseProductService;
 
+
+
     @GetMapping("/product/count")
     public ResultBean<Integer> getProductCount(String productId) {
         ResultBean<Integer> bean = new ResultBean<>("success", RESULT_BEAN_STATUS_CODE.SUCCESS);
@@ -40,6 +42,10 @@ public class ProductController {
         return new ResultBean<>("fail", RESULT_BEAN_STATUS_CODE.UNKNOWN_EXCEPTION);
     }
 
+    @GetMapping("/product/preheat")
+    public ResultBean<Boolean> preheat(Integer productOrder) {
+        return null;
+    }
 
 
 }

@@ -5,30 +5,25 @@ package com.inkfish.seckill.common;
  **/
 public enum REDIS_PRODUCT_CACHE {
 
-    /**
-     * 销售开始时间
-     * */
-    SALES_BEGIN_TIME_STRING(""),
 
     /**
-     *库存售完标记
-     * */
-    SALES_OUT_TAG_HASH(""),
+     * 0是开始时间
+     * 1是结束时间
+     * 2为库存
+     */
+    SALES_PRODUCT_INFORMATION_HASH_NAMESPACE(""),
 
-    /**
-     * 商品库存
-     * */
-    SALES_PRODUCT_COUNT_STRING_NAMESPACE("");
+    PRODUCT_DATE_FORMAT("yyyy-MM-dd hh:mm:ss");
 
 
     private String value;
 
-    REDIS_PRODUCT_CACHE(String value){
+    REDIS_PRODUCT_CACHE(String value) {
         this.value = value;
     }
 
-    public String getValue(){
-       return this.value;
+    public String getValue() {
+        return this.value;
     }
 
 }

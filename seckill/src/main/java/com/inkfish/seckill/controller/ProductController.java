@@ -40,4 +40,6 @@ public class ProductController {
         return new ResultBean<>("fail", RESULT_BEAN_STATUS_CODE.UNKNOWN_EXCEPTION);
     }
 
+
+
 }
